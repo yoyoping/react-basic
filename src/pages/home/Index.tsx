@@ -5,7 +5,7 @@ import { useStore } from '../context/Index'
 const Home_: React.FC<any> = () => {
 
   const [store, dispatch] = useStore();
-
+  
   const setUser = () => {
     const userinfo = {name:'zhangping', age: 20, sex: 'man'}
     localStorage.setItem('userinfo', JSON.stringify(userinfo))
