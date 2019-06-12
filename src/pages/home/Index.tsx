@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { useCount } from '../context/Index'
+import { useStore } from '../context/Index'
 
 const Home_: React.FC<any> = () => {
 
-  const [count, dispatch] = useCount();
+  const [store, dispatch] = useStore();
+
+  const setUser = () => {
+    const userinfo = {name:'zhangping', age: 20, sex: 'man'}
+    localStorage.setItem('userinfo', JSON.stringify(userinfo))
+    dispatch({ type: 'SET_USERINFO', userinfo })
+  }
 
   return (
     <>
@@ -19,12 +25,12 @@ const Home_: React.FC<any> = () => {
       </div>
       <p>---------------</p>
       <p>---------------</p>
-      {/* <div>
-        {count}
-        <button onClick={() => dispatch({ type: 'increment' })}>+1</button>
-        <button onClick={() => dispatch({ type: 'decrement' })}>-1</button>
-        <button onClick={() => dispatch({ type: 'set', count: 0 })}>reset</button>
-      </div> */}
+      <div>
+        <p>姓名：{store.userinfo.name}</p>
+        <p>年龄：{store.userinfo.age}</p>
+        <p>性别：{store.userinfo.sex}</p>
+        <button onClick={setUser}>设置</button>
+      </div>
     </>
   )
 }

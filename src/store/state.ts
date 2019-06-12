@@ -1,9 +1,11 @@
 /**
  * 定义初始状态
  */
+
+const userinfo: string = localStorage.getItem('userinfo') || '{}'
+
 const initialState = {
-  count1: 0,
-  count2: 0,
+  userinfo: JSON.parse(userinfo) // 用户信息
 };
 
 export default initialState

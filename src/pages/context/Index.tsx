@@ -2,18 +2,25 @@ import React, { useReducer, useContext } from 'react';
 import reducer from '../../store/reducer'
 import initialState from '../../store/state'
 
-const CountContext = React.createContext<any>([])
+const Context = React.createContext<any>({})
 
+/**
+ * 导出带有value的Provider
+ * @param children： 子组件 
+ */
 export const Provider = ({ children }: { children:any }) => {
   const contextValue = useReducer(reducer, initialState);
   return (
-    <CountContext.Provider value={contextValue}>
+    <Context.Provider value={contextValue}>
       {children}
-    </CountContext.Provider>
+    </Context.Provider>
   );
 };
 
-export const useCount = () => {
-  const contextValue = useContext(CountContext);
+/**
+ * 自定义hooks
+ */
+export const useStore = () => {
+  const contextValue = useContext(Context);
   return contextValue;
 };

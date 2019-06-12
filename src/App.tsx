@@ -5,7 +5,7 @@ import Layout from './pages/layout/Index'
 
 const App: React.FC = () => {
   return (
-    // <Provider>
+    <Provider>
       <Router>
         <div className="App">
           <Switch>
@@ -13,7 +13,7 @@ const App: React.FC = () => {
           </Switch>
         </div>
       </Router>
-    // </Provider>
+    </Provider>
   );
 }
 
