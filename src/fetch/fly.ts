@@ -56,10 +56,12 @@ Fly.interceptors.response.use((response:any) => {
 
 let newApiUri:any = ApiUri
 const Fetch = (params:ParamsType) => {
+	// 当前api对象
+	const uriObj = newApiUri[params[`uriCode`]]
 	// 请求的url
-  let uri = newApiUri[params[`uriCode`]].uri
+  let uri = uriObj.uri
   // 请求的方法类型
-  const method_ = params.method || `GET`
+  const method_ = uriObj.method || `GET`
   // 获取传给后端的参数
   let param = JSON.parse(JSON.stringify(params))
   delete param[`uriCode`]
