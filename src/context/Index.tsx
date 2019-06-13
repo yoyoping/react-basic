@@ -1,6 +1,6 @@
 import React, { useReducer, useContext } from 'react';
-import reducer from '../../store/reducer'
-import initialState from '../../store/state'
+import reducer from '../store/reducer'
+import initialState from '../store/state'
 
 const Context = React.createContext<any>({})
 

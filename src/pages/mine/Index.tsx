@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore } from '../context/Index'
+import { useStore } from '../../context/Index'
 
 const Mine: React.FC<any> = (props:any) => {
   const [store] = useStore()

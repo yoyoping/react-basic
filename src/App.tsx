@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import { Provider } from './pages/context/Index'
+import { Provider } from './context/Index'
 import Layout from './pages/layout/Index'
 
 const App: React.FC = () => {
