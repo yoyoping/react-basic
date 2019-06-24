@@ -40,8 +40,6 @@ Fly.interceptors.response.use((response:any) => {
 			console.error('系统繁忙！')
 		} else if (error.response.status === 404) {
 			console.error('资源未找到！')
-		} else if (error.response.status === 406) {
-			console.error(error.response.data.detail)
 		} else {
 			console.error(error.response.data.detail)
 		}

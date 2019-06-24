@@ -2,7 +2,7 @@
  * @Description: 路由组件
  * @Author: your name
  * @Date: 2019-05-30 19:58:00
- * @LastEditTime: 2019-06-11 20:32:09
+ * @LastEditTime: 2019-06-24 11:46:32
  * @LastEditors: Please set LastEditors
  */
 /**
@@ -15,7 +15,8 @@ import RouteMap from '../../route/Route'
 import NotFound from '../../pages/error/NotFound'
 import NoPermissions from '../../pages/error/NoPermissions'
 
-const PrivateRoute: React.FC<any> = props => {
+
+const PrivateRoute: React.FC = () => {
   const [token] = useState(sessionStorage.getItem('token')) // 获取当前是否登录
   const [auth] = useState<any | null>(sessionStorage.getItem('auth')) // 获取当前权限
   return (
