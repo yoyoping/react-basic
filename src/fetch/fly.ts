@@ -10,7 +10,7 @@ interface IParams {
 
 //添加请求拦截器
 Fly.interceptors.request.use((config:any) => {
-	config.baseURL = process.env.NODE_ENV === `production` ? `http://about.bingodac.com` : ``
+	config.baseURL = process.env.NODE_ENV === `production` ? `/` : ``
 	//给所有请求添加自定义header
 	config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 	config.headers['x-access-token'] = localStorage['token'] || ''
