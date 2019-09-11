@@ -1,3 +1,10 @@
+/*
+ * @Description: 请求封装
+ * @Author: zhangping
+ * @Date: 2019-07-19 17:40:49
+ * @LastEditTime: 2019-09-11 17:23:25
+ * @LastEditors: Please set LastEditors
+ */
 import Fly from 'flyio'
 import ApiUri from "./api"
 // import { createHashHistory } from 'history' // hashRouter编程式跳转
@@ -32,17 +39,21 @@ Fly.interceptors.response.use((response:any) => {
 		}
 	},
 	(error:any) => {
-		if (!error.response) {
-			console.error('系统繁忙！')
-			return
+		let errDescription = '系统错误！'
+		switch (error.response.status) {
+			case 400:
+				errDescription = error.response.data.detail || '参数错误！'
+				break
+			case 404:
+				errDescription = '资源未找到！'
+				break
+			case 500:
+				errDescription = '系统错误！'
+				break
+			default:
+				errDescription = error.response.data.detail
 		}
-		if (error.response.status === 500) {
-			console.error('系统繁忙！')
-		} else if (error.response.status === 404) {
-			console.error('资源未找到！')
-		} else {
-			console.error(error.response.data.detail)
-		}
+		console.log(errDescription)
 		return new Promise((response,reject) => {
 			reject(error)
 		})
