@@ -2,7 +2,7 @@
  * @Description: 请求封装
  * @Author: zhangping
  * @Date: 2019-07-19 17:40:49
- * @LastEditTime: 2019-09-11 17:23:25
+ * @LastEditTime: 2019-09-24 17:37:29
  * @LastEditors: Please set LastEditors
  */
 import Fly from 'flyio'
@@ -71,17 +71,17 @@ const Fetch = (params:IParams) => {
   let uri = uriObj.uri
 	// 请求的方法类型
 	let method_: 'get' | 'post' | 'patch' | 'delete' | 'put'
-	switch (uriObj.method) {
-		case 'post' || 'patch' || 'delete' || 'put':
-			method_ = uriObj.method;
-		default:
-			method_ = 'get'
+	if (!uriObj.method) {
+		method_ = 'get'
+	} else {
+		method_ = uriObj.method;
 	}
   // 获取传给后端的参数
   let param = JSON.parse(JSON.stringify(params))
   delete param[`uriCode`]
-  delete param.method
-  return Fly[method_](uri, param)
+	delete param.method
+	const _fly: any = Fly
+  return _fly[method_](uri, param)
 }
 
 export default Fetch
