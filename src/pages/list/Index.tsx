@@ -11,7 +11,7 @@ const List: React.FC<any> = () => {
 
   const getData = async () => {
     const params = {
-      uriCode: 'BS01'
+      uriCode: 'TEST01'
     }
     const res:any = await Fetch(params)
     setList(res.banners)
